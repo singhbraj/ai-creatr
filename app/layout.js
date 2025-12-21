@@ -1,9 +1,12 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ClerkProvider } from "@clerk/nextjs";
+import { ConvexClientProvider } from "@/components/convex-client-provider";
+import { shadesOfPurple } from "@clerk/themes";
+import Header from "@/components/header";
 
-
-const inter = Inter({subsets: ["latin"]})
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
   title: "AI Content Plateform",
@@ -22,12 +25,20 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-              {/* <Header /> */}
+          <ClerkProvider
+            appearance={{
+              theme: shadesOfPurple,
+            }}
+          >
+            <ConvexClientProvider>
+              <Header />
               <main className="bg-slate-900 min-h-screen text-white overflow-x-hidden">
                 {/* <Toaster richColors /> */}
 
                 {children}
               </main>
+            </ConvexClientProvider>
+          </ClerkProvider>
         </ThemeProvider>
       </body>
     </html>
