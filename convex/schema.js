@@ -96,7 +96,7 @@ export default defineSchema({
   // Daily analytics tracking
   dailyStats: defineTable({
     postId: v.id("posts"),
-    date: v.string(), // YYYY-MM-DD format for easy querying
+    date: v.string(), // YYYY-MM-DD format for easy queryingπ
     views: v.number(),
 
     createdAt: v.number(),
