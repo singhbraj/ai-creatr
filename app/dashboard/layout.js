@@ -48,7 +48,7 @@ export default function DashboardLayout({ children }) {
   const pathname = usePathname();
 
   // Get draft info for badge
-//   const { data: draftPost } = useConvexQuery(api.posts.getUserDraft);
+  const { data: draftPost } = useConvexQuery(api.posts.getUserDraft);
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
@@ -124,7 +124,7 @@ export default function DashboardLayout({ children }) {
                   <span className="font-medium">{item.title}</span>
 
                   {/* Badge for Create Post if draft exists */}
-                  {item.title === "Create Post" && true && (
+                  {item.title === "Create Post" && draftPost && (
                     <Badge
                       variant="secondary"
                       className="ml-auto text-xs bg-orange-500/20 text-orange-300 border-orange-500/30"
